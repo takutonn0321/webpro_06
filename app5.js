@@ -91,7 +91,6 @@ app.get("/janken", (req, res) => {
 app.get("/fortune", (req, res) => {
   let hand = req.query.hand;
   let win = Number( req.query.win ) || 0;
-  let total = Number( req.query.total ) || 0;
   console.log( {hand, win, total});
   const num = Math.floor( Math.random() * 12 + 1 );
   // ここに勝敗の判定を入れる
@@ -555,11 +554,9 @@ app.get("/fortune", (req, res) => {
 
   const display = {
     your: hand,
-    cpu: cpu,
     judgement: judgement,
     win: win,
-    total: total
   }
-  res.render( 'janken', display );
+  res.render( 'fortune', display );
 });
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
