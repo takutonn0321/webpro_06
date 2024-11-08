@@ -90,8 +90,7 @@ app.get("/janken", (req, res) => {
 
 app.get("/fortune", (req, res) => {
   let hand = req.query.hand;
-  let win = Number( req.query.win ) || 0;
-  console.log( {hand, win, total});
+  console.log( {hand});
   const num = Math.floor( Math.random() * 12 + 1 );
   // ここに勝敗の判定を入れる
   let judgement = '';
