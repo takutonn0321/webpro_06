@@ -92,11 +92,18 @@ app.get("/suujiate", (req, res) => {
   let win = Number( req.query.win ) || 0;
   let total = Number( req.query.total ) || 0;
   console.log( {hand, win, total});
-  const num = Math.floor( Math.random() * 3 + 1 );
+  const num = Math.floor( Math.random() * 10 + 1 );
   let cpu = '';
-  if( num==1 ) cpu = 'グー';
-  else if( num==2 ) cpu = 'チョキ';
-  else cpu = 'パー';
+  if( num==1 ) cpu = '1';
+  else if( num==2 ) cpu = '2';
+  else if( num==3 ) cpu = '3';
+  else if( num==4 ) cpu = '4';
+  else if( num==5 ) cpu = '5';
+  else if( num==6 ) cpu = '6';
+  else if( num==7 ) cpu = '7';  
+  else if( num==8 ) cpu = '8';
+  else if( num==9 ) cpu = '9';
+  else cpu = '10';
   // ここに勝敗の判定を入れる
   let judgement = '';
   if ( cpu === hand ){
