@@ -130,4 +130,38 @@ app.get("/suujiate", (req, res) => {
   res.render( 'suujiate', display );
 });
 
+app.get("/attimuitehoi", (req, res) => {
+  let hand = req.query.hand;
+  let win = Number( req.query.win ) || 0;
+  let total = Number( req.query.total ) || 0;
+  console.log( {hand, win, total});
+  const num = Math.floor( Math.random() * 4 + 1 );
+  let cpu = '';
+  if( num==1 ) cpu = 'みぎ';
+  else if( num==2 ) cpu = 'ひだり';
+  else if( num==3 ) cpu = 'うえ'
+  else cpu = 'した';
+  // ここに勝敗の判定を入れる
+  let judgement = '';
+  if ( cpu === hand ){
+    judgement = '勝ち';
+  }
+  else {
+  judgement = '負け';
+  }
+
+  if (judgement == '勝ち'){
+    win += 1;
+  }
+  total += 1;
+  const display = {
+    your: hand,
+    cpu: cpu,
+    judgement: judgement,
+    win: win,
+    total: total
+  }
+  res.render( 'attimuitehoi', display );
+});
+
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
